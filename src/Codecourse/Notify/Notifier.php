@@ -100,6 +100,10 @@ class Notifier
      */
     public function option($key, $default = null)
     {
+        if(class_exists('\Arr')) {
+            return \Arr::get($this->options(true), $key, $default);
+        }
+    
         return array_get($this->options(true), $key, $default);
     }
 }
